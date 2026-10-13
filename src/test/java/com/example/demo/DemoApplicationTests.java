@@ -38,4 +38,11 @@ class DemoApplicationTests {
         assertThat(response.statusCode()).isEqualTo(200);
         assertThat(response.body()).contains("\"status\":\"UP\"");
     }
+
+    @Test
+    void livenessProbeIsUp() throws Exception {
+        HttpResponse<String> response = get("/actuator/health/liveness");
+        assertThat(response.statusCode()).isEqualTo(200);
+        assertThat(response.body()).contains("\"status\":\"UP\"");
+    }
 }
